@@ -1,11 +1,16 @@
 import React from  'react';
+import {bindActionCreators} from 'redux';
 import { connect } from 'react-redux';
+import User from '../components/User';
+import Page from '../components/Page';
+import * as pageAction from '../actions/PageAction';
 
 var App = React.createClass({
           render: function () {
           return (
               <div>
-                  <p>У тебя {this.props.page.photos.length} фото за {this.props.page.year} год</p>
+                  <User name={this.props.user.name} />
+                  <Page year={this.props.page.year} photos={this.props.page.photos} setYear = {this.props.pageAction}/>
               </div>
           );
    }
@@ -18,4 +23,10 @@ function mapStateToProps(state) {
         page: state.page
     }
 }
-export  default  connect (mapStateToProps)(App);
+
+function mapDispatchToProps(dispatch) {
+    return{
+        pageAction : bindActionCreators(pageAction, dispatch)
+    }
+}
+export  default  connect (mapStateToProps, mapDispatchToProps)(App);

@@ -13,3 +13,6 @@ var User = React.createClass({
 User.propTypes = {
   name: PropTypes.string.isRequired
 };
+
+
+module.exports = User;
