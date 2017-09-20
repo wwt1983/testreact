@@ -3,7 +3,7 @@ import React, {PropTypes} from 'react';
 var Page = React.createClass({
     onYearBtnClick: function (e) {
         console.log(e.target.innerText);
-        this.props.setYear(e.target.innerText);
+        this.props.getPhotos(Number(e.target.innerText));
     },
     render:function () {
         return (
@@ -22,6 +22,6 @@ var Page = React.createClass({
 Page.propTypes = {
     year: PropTypes.number.isRequired,
     photos: PropTypes.array.isRequired,
-
+    getPhotos: PropTypes.func.isRequired
 };
 module.exports  = Page;
